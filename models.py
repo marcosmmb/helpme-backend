@@ -1,4 +1,12 @@
-from sqlalchemy import Boolean, Column, Integer, String, Float, DateTime, create_engine
+from sqlalchemy import (
+    Boolean,
+    Column,
+    Integer,
+    String,
+    Float,
+    DateTime,
+    create_engine,
+)
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.orm import sessionmaker
 
@@ -35,6 +43,7 @@ class User(Base):
     def __repr__(self):
         return "<{} ({}, {})>".format(self.email, self.x, self.y)
 
+
 class Alarm(Base):
     x = Column(Float, default=0)
     y = Column(Float, default=0)
@@ -42,5 +51,6 @@ class Alarm(Base):
 
     def __repr__(self):
         return "<({}, {}) at {}".format(self.x, self.y, self.creation)
+
 
 Base.metadata.create_all(bind=engine)
