@@ -38,11 +38,19 @@ class PositionAndRadius(BaseModel):
 
 @app.post("/create_alarm")
 async def create_alarm_(alarm: NewAlarm):
+    """
+    Criar alarme na posição x y
+    Esse endpoint deve ser usado pelo botão (hardware)
+    """
     create_new_alarm(alarm.x, alarm.y)
     return {"message": "New alarm created at {}, {}".format(alarm.x, alarm.y)}
 
 
 @app.post("/get_near_alarms")
 async def get_near_alarms(inp: PositionAndRadius):
+    """
+    Pegar alarmes dentro de um raio a partir de x, y que aconteceu há minutos
+    Esse endpoint deve ser usado pelo app
+    """
     r = get_alarm_by_radius(inp.x, inp.y, radius=inp.radius, ago=inp.ago)
     return {"alarms": r}

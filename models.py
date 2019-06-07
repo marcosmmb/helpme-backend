@@ -13,7 +13,7 @@ import os
 
 from datetime import datetime
 
-# sqlite:///./main.db
+#SQLALCHEMY_DATABASE_URI = "sqlite:///./main.db"
 SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 # engine = create_engine(
