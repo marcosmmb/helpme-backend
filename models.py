@@ -9,11 +9,12 @@ from sqlalchemy import (
 )
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
 from sqlalchemy.orm import sessionmaker
+import os
 
 from datetime import datetime
 
-
-SQLALCHEMY_DATABASE_URI = "sqlite:///./main.db"
+# sqlite:///./main.db
+SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URI, connect_args={"check_same_thread": False}
