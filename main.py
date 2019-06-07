@@ -6,7 +6,10 @@ from controllers import (
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(
+    title="HelpMe! API",
+    version="1.0.0"
+)
 
 
 class UpdatePosition(BaseModel):
@@ -23,7 +26,8 @@ class NewAlarm(BaseModel):
 class PositionAndRadius(BaseModel):
     x: float
     y: float
-    radius: float = 5
+    radius: float = 5.0
+    ago: int = 10
 
 
 # @app.post("/update_user_position")
@@ -40,5 +44,5 @@ async def create_alarm_(alarm: NewAlarm):
 
 @app.post("/get_near_alarms")
 async def get_near_alarms(inp: PositionAndRadius):
-    r = get_alarm_by_radius(inp.x, inp.y, radius=inp.radius)
+    r = get_alarm_by_radius(inp.x, inp.y, radius=inp.radius, ago=inp.ago)
     return {"alarms": r}

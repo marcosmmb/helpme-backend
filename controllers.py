@@ -1,9 +1,11 @@
 from models import SessionLocal, User, Alarm
 from math import sqrt
+from datetime import datetime, timedelta
 
 db = SessionLocal()
 
 RADIUS = 5
+AGO = 10
 
 
 def create_new_user(email):
@@ -49,8 +51,14 @@ def create_new_alarm(x, y):
     return a
 
 
-def get_alarm_by_radius(x, y, radius=RADIUS):
-    alarms = db.query(Alarm).all()
+def now_minus(minutes=10):
+    now = datetime.utcnow()
+    ago = timedelta(minutes=minutes)
+    return now - ago
+
+
+def get_alarm_by_radius(x, y, radius=RADIUS, ago=AGO):
+    alarms = db.query(Alarm).filter(Alarm.creation >= now_minus(ago)).all()
     inside_alarms = list()
     for a in alarms:
         if sqrt((x - a.x) ** 2 + (y - a.y) ** 2) <= radius:

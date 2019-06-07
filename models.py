@@ -13,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
 
-SQLALCHEMY_DATABASE_URI = "sqlite:///./test.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///./main.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URI, connect_args={"check_same_thread": False}
