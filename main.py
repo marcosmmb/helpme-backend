@@ -5,12 +5,20 @@ from controllers import (
 )
 from fastapi import FastAPI
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="HelpMe! API",
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_origins=["*"],
+)
 
 class UpdatePosition(BaseModel):
     email: str
