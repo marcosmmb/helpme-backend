@@ -10,10 +10,13 @@ AGO = 10
 
 def create_new_user(email):
     u = User(email=email)
-    db.add(u)
-    db.commit()
-    return u
-
+    try:
+        db.add(u)
+        db.commit()
+        return u
+    except:
+        db.rollback()
+        raise
 
 def get_user_by_email(email):
     u = db.query(User).filter(User.email == email).first()
@@ -26,13 +29,17 @@ def get_user_position(email):
 
 
 def update_user_position(email, new_x, new_y):
-    u = get_user_by_email(email)
-    if not u:
-        u = create_new_user(email)
-    u.x = float(new_x)
-    u.y = float(new_y)
-    db.commit()
-    return (u.x, u.y)
+    try:
+        u = get_user_by_email(email)
+        if not u:
+            u = create_new_user(email)
+        u.x = float(new_x)
+        u.y = float(new_y)
+        db.commit()
+        return (u.x, u.y)
+    except:
+        db.rollback()
+        raise
 
 
 def get_users_by_radius(x, y, radius=RADIUS):
@@ -45,10 +52,14 @@ def get_users_by_radius(x, y, radius=RADIUS):
 
 
 def create_new_alarm(x, y):
-    a = Alarm(x=x, y=y)
-    db.add(a)
-    db.commit()
-    return a
+    try:
+        a = Alarm(x=x, y=y)
+        db.add(a)
+        db.commit()
+        return a
+    except:
+        db.rollback()
+        raise
 
 
 def now_minus(minutes=10):
