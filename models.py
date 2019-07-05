@@ -14,7 +14,8 @@ import os
 from datetime import datetime
 
 #SQLALCHEMY_DATABASE_URI = "sqlite:///./main.db"
-SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+#SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+SQLALCHEMY_DATABASE_URI = "postgres://kvpiijfokwhwez:7b315e7343e78e277a5cfe207027339166890491829bc59f9036aaffeb9c402f@ec2-54-227-251-33.compute-1.amazonaws.com:5432/d8nbofc5oocua4"
 
 # engine = create_engine(
 #     SQLALCHEMY_DATABASE_URI, connect_args={"check_same_thread": False}
@@ -49,7 +50,7 @@ class User(Base):
 class Alarm(Base):
     x = Column(Float, default=0)
     y = Column(Float, default=0)
-    creation = Column(DateTime, default=datetime.utcnow())
+    creation = Column(DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return "<({}, {}) at {}".format(self.x, self.y, self.creation)
