@@ -53,7 +53,7 @@ class Alarm(Base):
     creation = Column(DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return "<({}, {}) at {}".format(self.x, self.y, self.creation)
+        return "<({}, {}) at {}>".format(self.x, self.y, self.creation)
 
 
 Base.metadata.create_all(bind=engine)
