@@ -27,4 +27,4 @@ uuid==1.30
 uvicorn==0.6.1
 uvloop==0.12.2
 virtualenv==15.2.0
-Werkzeug==0.14.1
+Werkzeug==0.15.3
