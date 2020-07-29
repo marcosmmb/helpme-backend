@@ -24,7 +24,7 @@ SQLAlchemy==1.2.5
 starlette==0.11.1
 urllib3==1.22
 uuid==1.30
-uvicorn==0.6.1
+uvicorn==0.11.7
 uvloop==0.12.2
 virtualenv==15.2.0
 Werkzeug==0.14.1
