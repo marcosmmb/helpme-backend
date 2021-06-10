@@ -5,7 +5,7 @@ BaseHash==3.0.4
 bcrypt==3.1.4
 bitarray==0.8.1
 cookiecutter==1.6.0
-fastapi==0.22.0
+fastapi==0.65.2
 fastecdsa==1.7.1
 gunicorn==19.9.0
 imgurpython==1.1.7
