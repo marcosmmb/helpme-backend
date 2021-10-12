@@ -6,7 +6,7 @@ bcrypt==3.1.4
 bitarray==0.8.1
 cookiecutter==1.6.0
 fastapi==0.22.0
-fastecdsa==1.7.1
+fastecdsa==2.1.2
 gunicorn==19.9.0
 imgurpython==1.1.7
 Jinja2==2.10
